@@ -40,6 +40,7 @@ const db = initializeFirestore(app, {
 const auth = getAuth(app);
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
   const [activeTab, setActiveTab] = useState<TabType>('byNumber');
   const [hasConsented, setHasConsented] = useState<boolean>(false);
   const [showConsentModal, setShowConsentModal] = useState<boolean>(false);
@@ -70,7 +71,15 @@ export default function App() {
       setHasConsented(true);
     }
 
-    return () => unsubscribe();
+    // Splash screen timer
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 2500);
+
+    return () => {
+      unsubscribe();
+      clearTimeout(timer);
+    };
   }, []);
 
   const handleConsent = async () => {
@@ -238,7 +247,7 @@ export default function App() {
                   inputMode="numeric"
                   pattern="[0-9]*"
                   placeholder="77xxxxxxx"
-                  className={`w-full p-4 pl-12 rounded-2xl bg-white shadow-sm border ${searchError ? 'border-red-300' : 'border-slate-100'} focus:ring-2 focus:ring-blue-500 outline-none transition-all`}
+                  className={`w-full p-4 pl-12 rounded-2xl bg-white shadow-sm border ${searchError ? 'border-red-300' : 'border-slate-100'} focus:ring-2 focus:ring-emerald-800 outline-none transition-all`}
                   value={searchQuery}
                   onChange={(e) => {
                     const val = e.target.value.replace(/\D/g, '').slice(0, 9);
@@ -249,7 +258,7 @@ export default function App() {
                 />
                 <button 
                   onClick={() => handleSearch('number')}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 bg-blue-500 text-white p-2 rounded-xl hover:bg-blue-600 transition-colors"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 bg-emerald-800 text-white p-2 rounded-xl hover:bg-emerald-900 transition-colors"
                 >
                   <Search size={20} />
                 </button>
@@ -275,7 +284,7 @@ export default function App() {
                   className="bg-white p-4 rounded-2xl shadow-sm border border-slate-50 flex items-center justify-between"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-lg shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-800 flex items-center justify-center font-bold text-lg shrink-0">
                       {idx + 1}
                     </div>
                     <div className="space-y-1">
@@ -314,7 +323,7 @@ export default function App() {
                 <input
                   type="text"
                   placeholder="البحث بالإسم"
-                  className={`w-full p-4 pl-12 rounded-2xl bg-white shadow-sm border ${nameSearchError ? 'border-red-300' : 'border-slate-100'} focus:ring-2 focus:ring-blue-500 outline-none transition-all`}
+                  className={`w-full p-4 pl-12 rounded-2xl bg-white shadow-sm border ${nameSearchError ? 'border-red-300' : 'border-slate-100'} focus:ring-2 focus:ring-emerald-800 outline-none transition-all`}
                   value={nameSearchQuery}
                   onChange={(e) => {
                     // Allow only Arabic characters and spaces
@@ -326,7 +335,7 @@ export default function App() {
                 />
                 <button 
                   onClick={() => handleSearch('name')}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 bg-blue-500 text-white p-2 rounded-xl hover:bg-blue-600 transition-colors"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 bg-emerald-800 text-white p-2 rounded-xl hover:bg-emerald-900 transition-colors"
                 >
                   <Search size={20} />
                 </button>
@@ -367,7 +376,7 @@ export default function App() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xs">
+                    <div className="w-6 h-6 rounded-full bg-emerald-50 text-emerald-800 flex items-center justify-center font-bold text-xs">
                       {idx + 1}
                     </div>
                     <button 
@@ -388,7 +397,7 @@ export default function App() {
             <div className="flex flex-col items-center justify-center h-[70vh] p-6 text-center">
               <button 
                 onClick={() => setShowConsentModal(true)}
-                className="w-full max-w-xs bg-blue-500 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-blue-600 transition-all active:scale-95"
+                className="w-full max-w-xs bg-emerald-800 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-emerald-900 transition-all active:scale-95"
               >
                 السماح بالوصول لجهات الاتصال
               </button>
@@ -418,7 +427,7 @@ export default function App() {
               <div className="space-y-3">
                 {loading && <div className="text-center py-8 text-slate-400">جاري التحميل...</div>}
                 {!loading && filteredNames.map((n, idx) => (
-                  <div key={idx} className="bg-white rounded-lg border-x-4 border-blue-600 shadow-sm flex items-center p-3 gap-4">
+                  <div key={idx} className="bg-white rounded-lg border-x-4 border-emerald-800 shadow-sm flex items-center p-3 gap-4">
                     <div className="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center shrink-0">
                       <User size={28} className="text-slate-500" />
                     </div>
@@ -441,8 +450,8 @@ export default function App() {
             </div>
             
             <div className="grid gap-4">
-              <a href="mailto:support@yemennumbers.com" className="flex items-center gap-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-blue-200 transition-colors">
-                <div className="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">
+              <a href="mailto:support@yemennumbers.com" className="flex items-center gap-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-emerald-200 transition-colors">
+                <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-800 flex items-center justify-center">
                   <Mail size={24} />
                 </div>
                 <div>
@@ -451,8 +460,8 @@ export default function App() {
                 </div>
               </a>
               
-              <a href="tel:+967777123456" className="flex items-center gap-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-blue-200 transition-colors">
-                <div className="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">
+              <a href="tel:+967777123456" className="flex items-center gap-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-emerald-200 transition-colors">
+                <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-800 flex items-center justify-center">
                   <PhoneCall size={24} />
                 </div>
                 <div>
@@ -480,8 +489,83 @@ export default function App() {
 
   return (
     <div className="max-w-md mx-auto min-h-screen bg-white flex flex-col font-sans" dir="rtl">
+      <AnimatePresence>
+        {showSplash && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            className="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center overflow-hidden"
+          >
+            <motion.div
+              initial={{ scale: 1.2, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="absolute inset-0"
+            >
+              <img 
+                src="https://picsum.photos/seed/yemen-flag/1080/1920?blur=2" 
+                alt="Background" 
+                className="w-full h-full object-cover opacity-10"
+                referrerPolicy="no-referrer"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ 
+                delay: 0.3,
+                duration: 1, 
+                ease: [0, 0.71, 0.2, 1.01]
+              }}
+              className="relative w-full max-w-[340px] px-6 z-10"
+            >
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-emerald-900 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                <img 
+                  src="https://picsum.photos/seed/yemen-numbers-detector/800/800" 
+                  alt="كاشف الأرقام اليمني" 
+                  className="relative w-full h-auto object-contain rounded-2xl shadow-2xl"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2 }}
+              className="absolute bottom-16 flex flex-col items-center gap-6 z-10"
+            >
+              <div className="flex gap-2">
+                {[0, 1, 2].map((i) => (
+                  <motion.div 
+                    key={i}
+                    animate={{ 
+                      scale: [1, 1.5, 1],
+                      opacity: [0.3, 1, 0.3]
+                    }}
+                    transition={{ 
+                      repeat: Infinity, 
+                      duration: 1.5, 
+                      delay: i * 0.2 
+                    }}
+                    className="w-3 h-3 rounded-full bg-emerald-800 shadow-sm" 
+                  />
+                ))}
+              </div>
+              <div className="space-y-1 text-center">
+                <p className="text-emerald-900/60 text-xs font-bold tracking-[0.3em] uppercase">دليل أرقام اليمن</p>
+                <p className="text-emerald-900/20 text-[10px]">الإصدار 1.0.0</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Header */}
-      <header className="bg-blue-500 text-white p-5 sticky top-0 z-10">
+      <header className="bg-emerald-800 text-white p-5 sticky top-0 z-10">
         <div className="flex items-center justify-between">
           {activeTab === 'names' && hasConsented ? (
             <h1 className="text-xl font-bold w-full text-center">قائمة الأسماء</h1>
@@ -577,7 +661,7 @@ export default function App() {
                 <button 
                   onClick={handleConsent}
                   disabled={loading}
-                  className="flex-1 bg-blue-500 text-white py-3 rounded-xl font-bold hover:bg-blue-600 transition-colors shadow-lg shadow-blue-100 disabled:opacity-50 text-sm"
+                  className="flex-1 bg-emerald-800 text-white py-3 rounded-xl font-bold hover:bg-emerald-900 transition-colors shadow-lg shadow-emerald-100 disabled:opacity-50 text-sm"
                 >
                   {loading ? 'جاري الرفع...' : 'موافق  I agree'}
                 </button>
@@ -594,7 +678,7 @@ function NavButton({ active, onClick, icon, label }: { active: boolean, onClick:
   return (
     <button 
       onClick={onClick}
-      className={`flex flex-col items-center gap-1 transition-all ${active ? 'text-blue-500' : 'text-slate-400'}`}
+      className={`flex flex-col items-center gap-1 transition-all ${active ? 'text-emerald-800' : 'text-slate-400'}`}
     >
       <div className="p-1">
         {icon}

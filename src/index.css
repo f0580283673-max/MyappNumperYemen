@@ -11,7 +11,7 @@ body {
 }
 
 .tab-active {
-  @apply text-blue-500;
+  @apply text-emerald-800;
 }
 
 .tab-inactive {
