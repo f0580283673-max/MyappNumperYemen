@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /contacts/{contactId} {
+      // السماح بالقراءة للجميع للبحث عن الأرقام
+      allow read: if true;
+      
+      // السماح بالكتابة فقط للمستخدمين الموثقين (بما في ذلك الموثقين مجهولين)
+      allow create: if request.auth != null;
+      
+      // منع التعديل أو الحذف للحفاظ على سلامة البيانات
+      allow update, delete: if false;
+    }
+  }
+}

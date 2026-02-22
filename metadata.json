@@ -1,0 +1,5 @@
+{
+  "name": "Yemen Numbers - دليل أرقام اليمن",
+  "description": "تطبيق دليل أرقام اليمن المجتمعي للبحث عن الأرقام والأسماء.",
+  "requestFramePermissions": ["contacts"]
+}

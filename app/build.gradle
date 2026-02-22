@@ -1,0 +1,28 @@
+plugins {
+  id 'com.android.application'
+  // Add the Google services Gradle plugin
+  id 'com.google.gms.google-services'
+}
+
+android {
+  namespace 'com.example.yemeninumbers'
+  compileSdk 34
+
+  defaultConfig {
+    applicationId "com.example.yemeninumbers"
+    minSdk 21
+    targetSdk 34
+    versionCode 1
+    versionName "1.0"
+  }
+}
+
+dependencies {
+  // Import the Firebase BoM
+  implementation platform('com.google.firebase:firebase-bom:32.2.0')
+
+  // Add the dependencies for the desired Firebase products
+  // https://firebase.google.com/docs/android/setup#available-libraries
+  implementation 'com.google.firebase:firebase-auth-ktx'
+  implementation 'com.google.firebase:firebase-firestore-ktx'
+}
