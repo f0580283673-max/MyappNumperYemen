@@ -1,7 +1,6 @@
 workflows:
   android-native:
     name: Android Build
-    environment:
         # أي متغيرات بيئية
     scripts:
       - name: Build Android app
