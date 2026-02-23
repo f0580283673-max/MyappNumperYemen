@@ -9,6 +9,6 @@ workflows:
       - name: Build APK
       - name: Grant execute permission and build
           chmod +x gradlew
-          ./gradlew assembleRelease
+      scripts:    ./gradlew assembleRelease
     artifacts:
       - app/build/outputs/apk/release/*.apk
