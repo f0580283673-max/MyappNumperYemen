@@ -1,10 +1,7 @@
-workflows:
-  flutter-android:
-    name: Flutter Android Build
-    environment:
-      flutter: stable
-    scripts:
-     - cd app && flutter pub get
-     - cd app && flutter build apk --release
-    artifacts:
-      - build/app/outputs/flutter-apk/*.apk
+scripts:
+  - name: Build Android app
+    script: |
+      chmod +x gradlew
+      ./gradlew assembleRelease
+artifacts:
+  - app/build/outputs/**/**.apk
