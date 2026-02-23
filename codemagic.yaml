@@ -1,15 +1,9 @@
 workflows:
-  android-workflow:
+  android-native:
     name: Android Build
-    max_build_duration: 60
-        # يمكنك إضافة متغيرات البيئة هنا مثل مفاتيح API
-      # إذا كان مشروع Flutter، احذف هذا السطر للمشروع الأصلي
+        # أي متغيرات بيئية
     scripts:
-      - name: Set up local.properties
-        script: |
-          echo "sdk.dir=$ANDROID_HOME" > "$CM_BUILD_DIR/android/local.properties"
-       scripts:
-             - name: Build Android app
+      - name: Build Android app
     artifacts:
       - android/app/build/outputs/**/**.apk
     publishing:
