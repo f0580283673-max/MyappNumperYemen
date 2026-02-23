@@ -9,12 +9,7 @@ workflows:
         script: |
           echo "sdk.dir=$ANDROID_HOME" > "$CM_BUILD_DIR/android/local.properties"
        scripts:
-            - name: List files
-      script: ls -la
              - name: Build Android app
-        script: |
-           chmod +x gradlew
-         ./gradlew assembleRelease
     artifacts:
       - android/app/build/outputs/**/**.apk
     publishing:
