@@ -1,3 +1,7 @@
 scripts:
-  - name: Debug - list files
-    script: pwd && ls -la
+  - name: Build Android app
+    script: |
+      chmod +x gradlew
+      ./gradlew assembleRelease
+artifacts:
+  - app/build/outputs/**/**.apk
