@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "184723670397",
+    "project_id": "yemeni-numbers-detector-70ae4",
+    "storage_bucket": "yemeni-numbers-detector-70ae4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184723670397:android:8ba1cb8ae888619f22f814",
+        "android_client_info": {
+          "package_name": "com.example.yemeni_numbers_detector"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzOzN_4OSGibKdS38AoQaFtvg73GKYHd4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
