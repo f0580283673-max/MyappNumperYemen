@@ -1,5 +1,16 @@
-scripts:
-  - name: Build Android app
-    script: |
-      chmod +x gradlew
-      ./gradlew :app:assembleRelease   # أو cd app ثم ../gradlew
+workflows:
+  android-native:
+    name: Android Build
+        # أي متغيرات بيئية
+    scripts:
+      - name: Build Android app
+        script: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleRelease   # أو assembleDebug
+    artifacts:
+      - android/app/build/outputs/**/**.apk
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
