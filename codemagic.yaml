@@ -8,9 +8,9 @@ workflows:
       - name: Set up local.properties
         script: |
           echo "sdk.dir=$ANDROID_HOME" > "$CM_BUILD_DIR/android/local.properties"
-          scripts:
+       scripts:
             - name: List files
-               script: ls -la
+      script: ls -la
              - name: Build Android app
         script: |
            chmod +x gradlew
