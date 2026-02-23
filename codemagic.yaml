@@ -1,13 +1,17 @@
 workflows:
-  flutter-android:
-    name: Flutter Android Build
+  android-native:
+    name: Android Build
     environment:
-      flutter: stable
+      vars:
+        # أي متغيرات بيئية
     scripts:
-      - flutter pub get
-      - flutter build apk --release  # أو flutter build appbundle
+      - name: Build Android app
+        script: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleRelease   # أو assembleDebug
     artifacts:
-      - build/app/outputs/flutter-apk/*.apk
+      - android/app/build/outputs/**/**.apk
     publishing:
       email:
         recipients:
