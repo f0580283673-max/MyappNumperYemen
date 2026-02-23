@@ -8,7 +8,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    flutter create 
   firebase_core: ^2.15.0
   firebase_auth: ^4.9.0
   cloud_firestore: ^4.9.0
