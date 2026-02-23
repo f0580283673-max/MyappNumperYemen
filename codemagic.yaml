@@ -7,7 +7,6 @@ workflows:
         GRADLE_USER_HOME: $CM_CACHE_DIR/gradle
     scripts:
       - name: Build APK
-         scripts:
       - name: Grant execute permission and build
         script: |
           chmod +x gradlew
