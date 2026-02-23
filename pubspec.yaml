@@ -1,0 +1,21 @@
+name: arqam_yemen
+description: تطبيق كاشف أرقام اليمن المتطور - نسخة الأندرويد فقط.
+version: 1.2.5+5
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core: ^2.15.0
+  firebase_auth: ^4.9.0
+  cloud_firestore: ^4.9.0
+  contacts_service: ^0.6.3
+  permission_handler: ^11.0.1
+  device_info_plus: ^9.1.0
+  shared_preferences: ^2.2.1
+  intl: ^0.18.1
+
+flutter:
+  uses-material-design: true
