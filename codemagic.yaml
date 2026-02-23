@@ -8,7 +8,6 @@ workflows:
     scripts:
       - name: Build APK
       - name: Grant execute permission and build
-        script: |
           chmod +x gradlew
           ./gradlew assembleRelease
     artifacts:
