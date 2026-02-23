@@ -1,1 +1,14 @@
-
+workflows:
+  flutter-android:
+    name: Flutter Android Build
+    environment:
+      flutter: stable
+    scripts:
+      - flutter pub get
+      - flutter build apk --release  # أو flutter build appbundle
+    artifacts:
+      - build/app/outputs/flutter-apk/*.apk
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
