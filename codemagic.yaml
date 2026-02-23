@@ -5,14 +5,8 @@ workflows:
     environment:
       vars:
         GRADLE_USER_HOME: $CM_CACHE_DIR/gradle
-      android:
-        build_tools_version: 33.0.2
-        compile_sdk_version: 33
-        target_sdk_version: 33
     scripts:
-      - name: Grant execute permission and build
-        script: |
-          chmod +x gradlew
-          ./gradlew assembleRelease
+      - name: Build APK
+        script: ./gradlew assembleRelease
     artifacts:
       - app/build/outputs/apk/release/*.apk
