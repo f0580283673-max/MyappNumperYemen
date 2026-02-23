@@ -7,8 +7,9 @@ workflows:
         GRADLE_USER_HOME: $CM_CACHE_DIR/gradle
     scripts:
       - name: Build APK
-        script: 
-        chmod +x gradlew
-        ./gradlew assembleRelease
+        script: |
+      cd android
+      chmod +x gradlew
+      ./gradlew assembleRelease
     artifacts:
       - app/build/outputs/apk/release/*.apk
