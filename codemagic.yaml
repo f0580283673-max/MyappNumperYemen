@@ -2,6 +2,4 @@ scripts:
   - name: Build Android app
     script: |
       chmod +x gradlew
-      ./gradlew assembleRelease
-artifacts:
-  - app/build/outputs/**/**.apk
+      ./gradlew :app:assembleRelease   # أو cd app ثم ../gradlew
