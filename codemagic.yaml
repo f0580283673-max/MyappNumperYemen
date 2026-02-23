@@ -4,8 +4,7 @@ workflows:
         # أي متغيرات بيئية
     scripts:
       - name: Build Android app
-        script: |
-          cd android
+        script: 
           chmod +x gradlew
           ./gradlew assembleRelease   # أو assembleDebug
     artifacts:
