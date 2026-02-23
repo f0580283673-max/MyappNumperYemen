@@ -2,8 +2,6 @@ workflows:
   android-workflow:
     name: Build Android APK
     max_build_duration: 60
-    environment:
-      vars:
         GRADLE_USER_HOME: $CM_CACHE_DIR/gradle
       android:
         build_tools_version: 33.0.2
